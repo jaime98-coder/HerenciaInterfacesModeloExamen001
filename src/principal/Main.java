@@ -33,7 +33,7 @@ public class Main {
 				Altavoz altavoz1 = (Altavoz) dispositivo;
 				System.out.println("\n-------------ALTAVOZ INTELIGENTE-------------");
 				System.out.println("Antes de subir volumen:");
-				altavoz1.mostrarVolumenActual();
+				altavoz1.mostrarNivelActual();
 				System.out.println("Tras una subida de volumen:");
 				altavoz1.subirNivel();
 				System.out.println("Tras dos subidas de volumen:");
@@ -46,7 +46,7 @@ public class Main {
 				Luz luz1 = (Luz) dispositivo;
 				System.out.println("\n---------------LUZ INTELIGENTE---------------");
 				System.out.println("Antes de subir brillo:");
-				luz1.mostrarBrilloActual();
+				luz1.mostrarNivelActual();
 				System.out.println("Tras subida de brillo:");
 				luz1.subirNivel();
 				luz1.cambiarColor("Rojo");

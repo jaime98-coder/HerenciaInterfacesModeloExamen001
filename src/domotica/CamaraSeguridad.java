@@ -28,8 +28,7 @@ public class CamaraSeguridad extends DispositivoInteligente implements EmitirAle
 	}
 
 	/**
-	 * Enciende la cámara
-	 * encendido pasa a true
+	 * Enciende la cámara encendido pasa a true
 	 */
 	public void encenderDispositivo() {
 		if (!this.encendido) {
@@ -41,8 +40,7 @@ public class CamaraSeguridad extends DispositivoInteligente implements EmitirAle
 	}
 
 	/**
-	 * Apaga la cámara
-	 *  encendido pasa a false
+	 * Apaga la cámara encendido pasa a false
 	 */
 	public void apagarDispositivo() {
 		if (this.encendido) {
@@ -52,20 +50,48 @@ public class CamaraSeguridad extends DispositivoInteligente implements EmitirAle
 		}
 	}
 
+	/**
+	 * Comienza a grabar si no está grabando
+	 * 
+	 * @throws IllegalStateException lanza una excepcion si el dispositivo está
+	 *                               apagado
+	 */
 	public void iniciarGrabacion() {
-		if (this.encendido && !this.grabando) {
-			this.grabando = true;
-			System.out.println("Comenzando grabación...");
+		if (this.encendido) {
+			if (this.encendido && !this.grabando) {
+				this.grabando = true;
+				System.out.println("Comenzando grabación...");
+			}
+		} else {
+			super.lanzarErrorApagado();
 		}
 	}
 
+	/**
+	 * Detiene la grabacíón si está grabando
+	 * 
+	 * @throws IllegalStateException lanza una excepcion si el dispositivo está
+	 *                               apagado
+	 */
+	
 	public void detenerGrabacion() {
-		if (this.encendido && this.grabando) {
-			this.grabando = false;
-			System.out.println("Deteniendo grabación...");
+		if (this.encendido) {
+			if (this.encendido && this.grabando) {
+				this.grabando = false;
+				System.out.println("Deteniendo grabación...");
+			}
+		} else {
+			super.lanzarErrorApagado();
 		}
 	}
 
+	/**
+	 * Activa la alerta
+	 * 
+	 * @param mensajeAlerta. Mensaje que reproducirá el termostato
+	 * @throws IllegalStateException Si se intenta activar la alerta estando apagado
+	 *                               lanza una excepción
+	 */
 	public void activarAlerta(String mensajeAlerta) {
 		if (this.encendido) {
 			if (!this.alertaActiva) {
@@ -79,6 +105,14 @@ public class CamaraSeguridad extends DispositivoInteligente implements EmitirAle
 		}
 	}
 
+	
+	/**
+	 * Desactiva la alerta
+	 * 
+	 * @param mensajeAlerta. Mensaje que reproducirá el termostato
+	 * @throws IllegalStateException Si se intenta activar la alerta estando apagado
+	 *                               lanza una excepción
+	 */
 	public void desactivarAlerta() {
 		if (this.encendido) {
 			if (this.alertaActiva) {
@@ -93,6 +127,10 @@ public class CamaraSeguridad extends DispositivoInteligente implements EmitirAle
 		}
 	}
 
+	/**
+	 * Informa del estado actual de la alerta
+	 */
+	@Override
 	public void informarAlertaActiva() {
 		if (this.alertaActiva) {
 			System.out.println("La alerta se encuentra en estado: ENCENDIDA");

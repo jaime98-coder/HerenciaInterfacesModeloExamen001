@@ -86,6 +86,7 @@ public abstract class DispositivoInteligente implements Comparable<DispositivoIn
 	 * @param obj EL objeto con el que se va a comparar
 	 * @return true --> Son el mismo producto. false --> No son mismo producto
 	 */
+	@Override
 	public boolean equals(Object obj) {
 		boolean sonIguales = false;
 		if (obj instanceof DispositivoInteligente) {

@@ -39,6 +39,7 @@ public class Altavoz extends DispositivoInteligente implements ModificarNivel {
 	 * Enciende el altavoz
 	 * encendido pasa a true
 	 */
+	@Override
 	public void encenderDispositivo() {
 		if (!this.encendido) {
 			this.encendido = true;
@@ -52,6 +53,7 @@ public class Altavoz extends DispositivoInteligente implements ModificarNivel {
 	 * Apaga el altavoz
 	 * encendido pasa a false
 	 */
+	@Override
 	public void apagarDispositivo() {
 		if (this.encendido) {
 			this.encendido = false;
@@ -68,6 +70,7 @@ public class Altavoz extends DispositivoInteligente implements ModificarNivel {
 	 * @throws IllegalStateException Si se intenta subir el volumen estando apagado
 	 *                               lanza una excepción
 	 */
+	@Override
 	public void subirNivel() {
 		if (this.encendido) {
 			if (nivelVolumen >= 0 && nivelVolumen < 100 && nivelVolumen + CANTIDAD_VOLUMEN <= 100) {
@@ -88,6 +91,7 @@ public class Altavoz extends DispositivoInteligente implements ModificarNivel {
 	 * @throws IllegalStateException Si se intenta subir el volumen estando apagado
 	 *                               lanza una excepción
 	 */
+	@Override
 	public void bajarNivel() {
 		if (this.encendido) {
 			if (nivelVolumen > 0 && nivelVolumen <= 100 && nivelVolumen - CANTIDAD_VOLUMEN >= 0) {
@@ -111,7 +115,8 @@ public class Altavoz extends DispositivoInteligente implements ModificarNivel {
 	/**
 	 * Muestra el volumen actual del altavoz
 	 */
-	public void mostrarVolumenActual() {
+	@Override
+	public void mostrarNivelActual() {
 		System.out.println("Volumen actual: " + getNivelVolumen());
 	}
 

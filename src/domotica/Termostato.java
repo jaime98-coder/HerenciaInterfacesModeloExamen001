@@ -65,6 +65,7 @@ public class Termostato extends DispositivoInteligente implements EmitirAlerta {
 	/**
 	 * Enciende el termostato encendido pasa a true
 	 */
+	@Override
 	public void encenderDispositivo() {
 		if (!this.encendido) {
 			this.encendido = true;
@@ -77,6 +78,7 @@ public class Termostato extends DispositivoInteligente implements EmitirAlerta {
 	/**
 	 * Apaga el termostato encendido pasa a false
 	 */
+	@Override
 	public void apagarDispositivo() {
 		if (this.encendido) {
 			this.encendido = false;
@@ -92,6 +94,7 @@ public class Termostato extends DispositivoInteligente implements EmitirAlerta {
 	 * @throws IllegalStateException Si se intenta activar la alerta estando apagado
 	 *                               lanza una excepción
 	 */
+	@Override
 	public void activarAlerta(String mensajeAlerta) {
 		if (this.encendido) {
 			if (!this.alertaActiva) {
@@ -112,6 +115,7 @@ public class Termostato extends DispositivoInteligente implements EmitirAlerta {
 	 * @throws IllegalStateException Si se intenta activar la alerta estando apagado
 	 *                               lanza una excepción
 	 */
+	@Override
 	public void desactivarAlerta() {
 		if (this.encendido) {
 			if (this.alertaActiva) {
@@ -129,6 +133,7 @@ public class Termostato extends DispositivoInteligente implements EmitirAlerta {
 	/**
 	 * Informa del estado de la alerta
 	 */
+	@Override
 	public void informarAlertaActiva() {
 		if (this.alertaActiva) {
 			System.out.println("La alerta se encuentra en estado: ENCENDIDA");

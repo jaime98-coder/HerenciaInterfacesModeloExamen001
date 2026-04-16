@@ -116,7 +116,8 @@ public class Luz extends DispositivoInteligente implements ModificarNivel {
 	/**
 	 * Muestro el brillo actual llamando al getNivelBrillo
 	 */
-	public void mostrarBrilloActual() {
+	@Override
+	public void mostrarNivelActual() {
 		System.out.println("Brillo actual: " + getNivelBrillo());
 	}
 
