@@ -1,0 +1,155 @@
+package domotica
+<<abstract>> DispositivoInteligente
+	|
+	|-Altavoz
+	|-Luz
+	|-Termostato
+	|-CamaraSeguridad
+interface ModificarNivel
+interface EmitirAlerta
+
+package principal
+Main
+
+
+package domotica
+------------------------------------------------
+· class <<abstract>> DispositivoInteligente implements Comparable<DispositivoInteligente>
+------------------------------------------------
+# nombreComercial: String
+# marca: String
+# encendido: boolean = false
+# precio: double
+------------------------------------------------
++ DispositivoInteligente(nombreComercial, marca, precio)
++ encenderDispositivo(): void
++ apagarDispositivo(): void
++ lanzarErrorApagado(): void
++ toString(): String
++ equals(): boolean
++ compareTo(): int
+------------------------------------------------
+
+
+------------------------------------------------
+· interface ModificarNivel
+------------------------------------------------
++ subirNivel(): void
++ bajarNivel(): void
+------------------------------------------------
+
+
+------------------------------------------------
+· interface EmitirAlerta
+------------------------------------------------
++ activarAlerta(mensajeAlerta: String): void
++ desactivarAlerta(): void
++ informarAlertaActiva(): void
+------------------------------------------------
+
+
+------------------------------------------------
+· class Altavoz implements ModificarNivel
+------------------------------------------------
+- nombreAsistente: String
+- nivelVolumen: int = 30
+- CANTIDAD_VOLUMEN: int = 5
+------------------------------------------------
+Altavoz(nombreComercial, marca, precio, nombreAsistente, nivelVolumen)
++ mostrarVolumenActual(): void
++ toString(): String
+------------------------------------------------
+Implementa:
++ subirNivel(): void
++ bajarNivel(): void
+------------------------------------------------
+Hereda:
+# nombreComercial: String
+# marca: String
+# encendido: boolean = false
+------------------------------------------------
+
+
+------------------------------------------------
+· class Luz implements ModificarNivel
+------------------------------------------------
+- color: String
+- nivelBrillo: int = 50
+- CANTIDAD_BRILLO: int = 10
+------------------------------------------------
+Luz (nombreComercial, marca, precio, color, nivelBrillo)
++ cambiarColor(color: String): void
++ mostrarBrilloActual(): void
++ toString(): String
+------------------------------------------------
+Implementa:
++ subirNivel(): void
++ bajarNivel(): void
+------------------------------------------------
+Hereda:
+# nombreComercial: String
+# marca: String
+# encendido: boolean = false
+------------------------------------------------
+
+
+------------------------------------------------
+· class Termostato implements EmitirAlerta
+------------------------------------------------
+- temperaturaObjetivo: int
+- modoFuncionamiento: String = false (decision propia)
+- alertaActiva: boolean = false (decision propia)
+- mensajeAlerta: String
+------------------------------------------------
+Termostato (nombreComercial, marca, precio)
++ modificarTemperatura(temperaturaObjetivo: int): void
++ cambiarModoFuncionamiento(): void
++ toString(): String
+------------------------------------------------
+Implementa:
++ activarAlerta(): void
++ desactivarAlerta(): void
++ informarAlertaActiva(): void
+------------------------------------------------
+Hereda:
+# nombreComercial: String
+# marca: String
+# encendido: boolean = false
+------------------------------------------------
+
+
+------------------------------------------------
+· class CamaraSeguridad implements EmitirAlerta
+------------------------------------------------
+- resolucion: String
+- grabando: boolean = false
+- alertaActiva: boolean
+- mensajeAlerta: String
+------------------------------------------------
+CamaraSeguridad(nombreComercial, marca, precio, resolucion)
++ iniciarGrabacion(): void
++ detenerGrabacion(): void
++ toString(): String
+------------------------------------------------
+Implementa:
++ activarAlerta(): void
++ desactivarAlerta(): void
++ informarAlertaActiva(): void
+------------------------------------------------
+Hereda:
+# nombreComercial: String
+# marca: String
+# encendido: boolean = false
+------------------------------------------------
+
+
+
+------------------------------------------------
+package principal
+------------------------------------------------
+· class Main
+------------------------------------------------
+dispositivo: DispositivoInteligente []
+------------------------------------------------
++ main(args: String[])
++ imprimirTabla(tablaDispositivos: DispositivoInteligente[])
