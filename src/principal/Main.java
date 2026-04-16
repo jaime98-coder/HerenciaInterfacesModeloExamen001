@@ -10,7 +10,7 @@ public class Main {
 
 		DispositivoInteligente tablaDispositivos[] = new DispositivoInteligente[4];
 		Altavoz altavoz = new Altavoz("Wonderboom", "Ultimate Ears", 90, "Wonderwoman");
-		Luz luz = new Luz("Light me!", "Lightroom", 10, "Rojo");
+		Luz luz = new Luz("Light me!", "Lightroom", 10);
 		Termostato termostato = new Termostato("Ay que freskito", "Taurus", 120);
 		CamaraSeguridad camara = new CamaraSeguridad("Camara 12S", "SPC", 50, "1080P");
 		tablaDispositivos[0] = altavoz;

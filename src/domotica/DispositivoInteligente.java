@@ -1,11 +1,22 @@
 package domotica;
 
+/**
+ * Representa un dispositivo inteligente abstracto
+ */
 public abstract class DispositivoInteligente implements Comparable<DispositivoInteligente> {
 	protected String nombreComercial;
 	protected String marca;
 	protected boolean encendido = false;
 	protected double precio;
 
+	/**
+	 * Constructor base para cualquier tipo de dispositivo inteligente Cualquier
+	 * dispositivo nace apagado (encendido=false)
+	 * 
+	 * @param nombreComercial Nombre comercial del dispositivo
+	 * @param marca           Marca del fabricante
+	 * @param precio          Precio de venta
+	 */
 	public DispositivoInteligente(String nombreComercial, String marca, double precio) {
 		setNombreComercial(nombreComercial);
 		setMarca(marca);
@@ -32,21 +43,15 @@ public abstract class DispositivoInteligente implements Comparable<DispositivoIn
 		return encendido;
 	}
 
-	public void encenderDispositivo() {
-		if (!this.encendido) {
-			this.encendido = true;
-		} else {
-			System.out.println("El dispositivo ya estaba encendido");
-		}
-	}
+	/**
+	 * Enciende el dispositivo inteligente
+	 */
+	public abstract void encenderDispositivo();
 
-	public void apagarDispositivo() {
-		if (this.encendido) {
-			this.encendido = false;
-		} else {
-			System.out.println("El dispositivo ya estaba apagado");
-		}
-	}
+	/**
+	 * Apaga el dispositivo inteligente
+	 */
+	public abstract void apagarDispositivo();
 
 	public double getPrecio() {
 		return precio;
@@ -56,6 +61,12 @@ public abstract class DispositivoInteligente implements Comparable<DispositivoIn
 		this.precio = precio;
 	}
 
+	/**
+	 * Centraliza la generación de errores cuando se intenta usar un dispositivo que
+	 * no está encendido.
+	 * 
+	 * @throws IllegalStateException Siempre que se invoca este método.
+	 */
 	public void lanzarErrorApagado() {
 		throw new IllegalStateException("\n¡¡ERROR: El dispositivo está apagado!!");
 	}
@@ -66,6 +77,15 @@ public abstract class DispositivoInteligente implements Comparable<DispositivoIn
 				+ encendido + " | precio: " + precio + " ]";
 	}
 
+	/**
+	 * Compara si dos dispositivos son iguales.
+	 * 
+	 * Son iguales si tiene el mismo nombre comercial y la misma marca, ignorando
+	 * mayusculas y minusculas
+	 * 
+	 * @param obj EL objeto con el que se va a comparar
+	 * @return true --> Son el mismo producto. false --> No son mismo producto
+	 */
 	public boolean equals(Object obj) {
 		boolean sonIguales = false;
 		if (obj instanceof DispositivoInteligente) {
@@ -80,6 +100,15 @@ public abstract class DispositivoInteligente implements Comparable<DispositivoIn
 		return sonIguales;
 	}
 
+	/**
+	 * Compara este dispositivo con otro para ordenarlos por precio (de menor a
+	 * mayor).
+	 * 
+	 * @param otroDispositivo El dispositivo contra el que vamos a comparar el
+	 *                        precio.
+	 *
+	 * @return 0 --> mismo precio. -1 --> menor precio. 1 --> Mayor precio
+	 */
 	@Override
 	public int compareTo(DispositivoInteligente otroDispositivo) {
 		int resultado = 0;
