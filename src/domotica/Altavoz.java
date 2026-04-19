@@ -36,8 +36,7 @@ public class Altavoz extends DispositivoInteligente implements ModificarNivel {
 	}
 
 	/**
-	 * Enciende el altavoz
-	 * encendido pasa a true
+	 * Enciende el altavoz encendido pasa a true
 	 */
 	@Override
 	public void encenderDispositivo() {
@@ -50,8 +49,7 @@ public class Altavoz extends DispositivoInteligente implements ModificarNivel {
 	}
 
 	/**
-	 * Apaga el altavoz
-	 * encendido pasa a false
+	 * Apaga el altavoz encendido pasa a false
 	 */
 	@Override
 	public void apagarDispositivo() {
@@ -61,7 +59,7 @@ public class Altavoz extends DispositivoInteligente implements ModificarNivel {
 			System.out.println("El altavoz ya estaba apagado");
 		}
 	}
-	
+
 	/**
 	 * Subir el nivel de volumen del altavoz
 	 * 
@@ -107,9 +105,9 @@ public class Altavoz extends DispositivoInteligente implements ModificarNivel {
 
 	@Override
 	public String toString() {
-		return "Altavoz [ nombreAsistente: " + nombreAsistente + " | nivelVolumen=" + nivelVolumen
-				+ " | nombreComercial: " + nombreComercial + " | marca: " + marca + " | encendido: " + encendido
-				+ " | precio: " + precio + " ]";
+		return "Altavoz - " + super.toString() + "nombreAsistente: " + nombreAsistente + " | nivelVolumen="
+				+ nivelVolumen + " | nombreComercial: " + nombreComercial + " | marca: " + marca + " | encendido: "
+				+ encendido + " | precio: " + precio;
 	}
 
 	/**

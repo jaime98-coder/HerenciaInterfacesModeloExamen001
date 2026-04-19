@@ -73,7 +73,7 @@ public abstract class DispositivoInteligente implements Comparable<DispositivoIn
 
 	@Override
 	public String toString() {
-		return "DispositivoInteligente [ Nombre Comercial: " + nombreComercial + " | Marca: " + marca + " | Encendido: "
+		return " Nombre Comercial: " + nombreComercial + " | Marca: " + marca + " | Encendido: "
 				+ encendido + " | precio: " + precio + " ]";
 	}
 
